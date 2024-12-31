@@ -76,7 +76,7 @@ def main():
     # Chemins d'accès aux images
     background_path = "C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//image_congo.jpg"
     ma_photo_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/Ma_photo.jpg"
-    pierre_photo_path = "C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//Image_Nathan.jpg"
+    pierre_photo_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/Image_Nathan.jpg"
 
     # Vérification de l'existence des fichiers AVANT de les utiliser
     if not os.path.exists(background_path):
