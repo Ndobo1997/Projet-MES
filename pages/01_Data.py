@@ -84,6 +84,8 @@ def main():
         st.header("Présentation de la Base")
         st.dataframe(styled_df)
 
+    except ImportError:
+        st.error("Erreur : La bibliothèque 'openpyxl' n'est pas installée. Veuillez l'installer avec 'pip install openpyxl'.")
     except Exception as e:
         st.error(f"Erreur lors du chargement du fichier Excel : {e}")
 
