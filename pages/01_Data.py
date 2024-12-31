@@ -1,19 +1,13 @@
 import streamlit as st
-import os
-import base64
 import pandas as pd
-import numpy as np
 
-def set_background(image_path, opacity=0.5, color="#000000"):
-    with open(image_path, "rb") as f:
-        image_data = f.read()
-    image_base64 = base64.b64encode(image_data).decode()
-
+def set_background(image_url, opacity=0.5, color="#000000"):
+    """Définit l'image de fond de l'application."""
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("data:image/jpeg;base64,{image_base64}");
+            background-image: url({image_url});
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -53,11 +47,6 @@ def set_background(image_path, opacity=0.5, color="#000000"):
             50% {{ opacity: 1; color: #87CEEB; }}
             100% {{ opacity: 0.2; color: #ADD8E6; }}
         }}
-        .fixed-text {{
-            color: #006400; /* Vert foncé */
-            font-size: 1.5em; /* Taille de police */
-            font-weight: normal; /* Poids de police normal */
-        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -65,38 +54,38 @@ def set_background(image_path, opacity=0.5, color="#000000"):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_BDD.jpg"
-    set_background(background_path, opacity=0.3, color="#000000")
-
-    st.markdown("""<h1 class="animated-title">Base de donnés RDC</h1>""", unsafe_allow_html=True)
-    st.markdown("""<h1 class="animated-title">Période étude : 1999 - 2023 </h1>""", unsafe_allow_html=True)
-    st.markdown('<h2 class="fade-in-out">Soit une serie de 24 ans. </h2>', unsafe_allow_html=True)
-    st.title("Les données présentées sur cette page résultent d'une collecte d'informations à partir de differents rapports de la banque centrale du congo (BCC).")
     
-if __name__ == '__main__':
-    main()
+    # Définir l'image de fond
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_BDD.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
 
+    # Affichage des titres
+    st.markdown("""<h1 class="animated-title">Base de données RDC</h1>""", unsafe_allow_html=True)
+    st.markdown("""<h1 class="animated-title">Période étude : 1999 - 2023</h1>""", unsafe_allow_html=True)
+    st.markdown('<h2 class="fade-in-out">Soit une série de 24 ans.</h2>', unsafe_allow_html=True)
+    st.title("Les données présentées sur cette page résultent d'une collecte d'informations à partir de différents rapports de la banque centrale du Congo (BCC).")
 
-def main():
-    st.header("Présentation de la Base")
-    file_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx"
-
-    #try:
-    df = pd.read_excel(file_path, engine='openpyxl')
+    # Chargement du fichier Excel
+    file_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/base%20de%20donnees%20RDC.xlsx"
+    
+    try:
+        df = pd.read_excel(file_path, engine='openpyxl')
 
         # Fonction pour formater l'affichage des nombres
-    def format_number(value):
+        def format_number(value):
             if isinstance(value, (int, float)):
                 return f"{value:.2f}"
             return value
 
         # Application du formatage à l'ensemble du DataFrame
-    styled_df = df.style.format(formatter=format_number)
+        styled_df = df.style.format(formatter=format_number)
 
         # Affichage du DataFrame stylisé
-    st.dataframe(styled_df)
+        st.header("Présentation de la Base")
+        st.dataframe(styled_df)
 
-        
+    except Exception as e:
+        st.error(f"Erreur lors du chargement du fichier Excel : {e}")
 
 if __name__ == '__main__':
     main()
