@@ -74,7 +74,7 @@ def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")  # Flocon de neige
 
     # Chemins d'accès aux images
-    background_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/image_congo.jpg"
+    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_congo.jpg"
     ma_photo_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/Ma_photo.jpg"
     pierre_photo_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/Image_Nathan.jpg"
 
