@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
 def main():
     st.header("Présentation de la Base")
-    file_path = "C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//Articles utiles//Secret pour notre travail//base de donnees RDC.xlsx"
+    file_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx"
 
     #try:
     df = pd.read_excel(file_path, engine='openpyxl')
