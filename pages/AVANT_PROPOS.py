@@ -101,7 +101,7 @@ def main():
         st.markdown('<p class="caption">Drapeau RDC</p>', unsafe_allow_html=True)
 
     with col2:
-        st.image("C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//image_bcc.jpg", use_container_width=True)
+        st.image("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_bcc.jpg", use_container_width=True)
         st.markdown('<p class="caption">BCC</p>', unsafe_allow_html=True)
 
     with col3:
