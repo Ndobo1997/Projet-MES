@@ -105,7 +105,7 @@ def main():
         st.markdown('<p class="caption">BCC</p>', unsafe_allow_html=True)
 
     with col3:
-        st.image("C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//Logo_ISSEA.jpeg", use_container_width=True)
+        st.image("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/Logo_ISSEA.jpeg", use_container_width=True)
         st.markdown('<p class="caption">ISSEA</p>', unsafe_allow_html=True)
 
     st.markdown("""<h1 class="animated-title">BIENVENU DANS CETTE PRESENTATION</h1>""", unsafe_allow_html=True)
