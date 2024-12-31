@@ -65,7 +65,7 @@ def set_background(image_path, opacity=0.5, color="#000000"):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//image_BDD.jpg"
+    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_BDD.jpg"
     set_background(background_path, opacity=0.3, color="#000000")
 
     st.markdown("""<h1 class="animated-title">Base de donnés RDC</h1>""", unsafe_allow_html=True)
