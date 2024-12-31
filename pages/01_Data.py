@@ -66,7 +66,7 @@ def main():
     st.title("Les données présentées sur cette page résultent d'une collecte d'informations à partir de différents rapports de la banque centrale du Congo (BCC).")
 
     # Chargement du fichier Excel
-    file_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/base%20de%20donnees%20RDC.xlsx"
+    file_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx"
     
     try:
         df = pd.read_excel(file_path, engine='openpyxl')
