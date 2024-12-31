@@ -75,7 +75,7 @@ def main():
 
     # Chemins d'accès aux images
     background_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/image_congo.jpg"
-    ma_photo_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/Ma_photo.jpg"
+    ma_photo_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/Ma_photo.jpg"
     pierre_photo_path = "https://github.com/Ndobo1997/Projet-MES/raw/main/Image_Nathan.jpg"
 
     # Vérification de l'existence des fichiers AVANT de les utiliser
