@@ -55,7 +55,7 @@ def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
     
     # Définir l'image de fond
-    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_BDD.jpg"
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_congo.jpg"
     set_background(background_url, opacity=0.3, color="#000000")
 
 
