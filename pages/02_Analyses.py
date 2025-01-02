@@ -9,12 +9,74 @@ import base64
 import plotly.graph_objects as go
 from statsmodels.tsa.api import VAR
 import networkx as nx
-
-def set_background(image_path, opacity=0.3, color="#000000"):
+def set_background(image_url, opacity=0.3, color="#000000"):
     """Fonction pour définir l'image de fond."""
-    # Convertir l'image en base64
-    with open(image_path, "rb") as image_file:
-        image_base64 = base64.b64encode(image_file.read()).decode()
+    # CSS pour définir l'image de fond
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{image_url}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        .stApp::before {{
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: {color};
+            opacity: {opacity};
+            z-index: -1;
+        }}
+        .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6, .stApp p, .stApp label, .stApp .streamlit-expanderHeader {{
+            color: yellow !important;
+            font-size: 16px !important;
+            font-family: sans-serif !important;
+        }}
+        .dataframe {{
+            background-color: rgba(255, 255, 255, 0.7) !important; /* Fond blanc semi-transparent */
+            color: green !important; /* Texte vert */
+            font-size: 14px !important;
+            border-collapse: collapse !important; /* Fusionne les bordures des cellules */
+            width: 100% !important; /* Occupe toute la largeur disponible */
+            margin-bottom: 1em !important;
+        }}
+        .dataframe th, .dataframe td {{
+            border: 1px solid #ddd !important; /* Bordure grise pour les cellules */
+            padding: 8px !important; /* Espacement intérieur des cellules */
+            text-align: left !important; /* Alignement du texte à gauche */
+        }}
+        .dataframe th {{
+            background-color: #f2f2f2 !important; /* Fond gris clair pour l'en-tête */
+            font-weight: bold !important;
+        }}
+        .stSuccess {{
+            color: lightgreen !important;
+        }}
+        .stWarning {{
+            color: orange !important;
+        }}
+        .stError {{
+            color: red !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+def main():
+    st.set_page_config(page_title="Visualisation des Données", page_icon="")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
+
+def main():
+    st.set_page_config(page_title="Visualisation des Données", page_icon="")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
 
     # CSS pour définir l'image de fond
     st.markdown(
@@ -134,11 +196,12 @@ def test_toda_yamamoto(df, var1, var2, max_lags):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
-    set_background(background_path, opacity=0.3, color="#000000")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
 
     try:
-        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx")
+        # Charger la base de données depuis l'URL
+        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/base%20de%20donnees%20RDC.xlsx")
         excluded_columns = ['Annee']
         if not all(col in df.columns for col in excluded_columns):
             missing_cols = [col for col in excluded_columns if col not in df.columns]
