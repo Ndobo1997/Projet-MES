@@ -134,11 +134,12 @@ def test_toda_yamamoto(df, var1, var2, max_lags):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
-    set_background(background_path, opacity=0.3, color="#000000")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
 
     try:
-        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx")
+        # Charger la base de données depuis l'URL
+        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/base%20de%20donnees%20RDC.xlsx")
         excluded_columns = ['Annee']
         if not all(col in df.columns for col in excluded_columns):
             missing_cols = [col for col in excluded_columns if col not in df.columns]
