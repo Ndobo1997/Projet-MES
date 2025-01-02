@@ -1,19 +1,17 @@
 import streamlit as st
-import os
-import base64
 import pandas as pd
 import numpy as np
+from statsmodels.tsa.ardl import ARDL
+from arch.unitroot import PhillipsPerron
 
-def set_background(image_path, opacity=0.5, color="#000000"):
-    with open(image_path, "rb") as f:
-        image_data = f.read()
-    image_base64 = base64.b64encode(image_data).decode()
-
+def set_background(image_url, opacity=0.5, color="#000000"):
+    """Fonction pour définir l'image de fond."""
+    # CSS pour définir l'image de fond
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("data:image/jpeg;base64,{image_base64}");
+            background-image: url("{image_url}");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -69,38 +67,17 @@ def set_background(image_path, opacity=0.5, color="#000000"):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_modelisation.jpg"
-    set_background(background_path, opacity=0.3, color="#FF4500")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_modelisation.jpg"
+    set_background(background_url, opacity=0.3, color="#FF4500")
 
-    st.markdown("""<h1 class="animated-title">Base de donnés RDC</h1>""", unsafe_allow_html=True)
+    st.markdown("""<h1 class="animated-title">Base de données RDC</h1>""", unsafe_allow_html=True)
     st.markdown('<h2 class="fade-in-out">Période étude : 1999 - 2023 </h2>', unsafe_allow_html=True)
-    st.markdown('<h2 class="fade-in-out">Soit une serie de 24 ans. </h2>', unsafe_allow_html=True)
-    st.title("Les données présentées sur cette page résultent d'une collecte d'informations à partir de differents rapports de la banque centrale du congo (BCC).")
-    
-if __name__ == '__main__':
-    main()
-
-import streamlit as st
-import pandas as pd
-from statsmodels.tsa.ardl import ARDL
-from arch.unitroot import PhillipsPerron
-import numpy as np
-
-def test_stationarity_pp(series):
-    """Effectue le test de Phillips-Perron et retourne la p-value."""
-    pp_test = PhillipsPerron(series)
-    return pp_test.pvalue  # p-value
-
-def test_first_difference_stationarity_pp(df, var):
-    """Vérifie la stationnarité de la première différence d'une série avec le test de Phillips-Perron."""
-    return test_stationarity_pp(df[var].diff().dropna())
-
-def main():
-    st.title("Estimation d'un Modèle ARDL avec Test de Phillips-Perron")
+    st.markdown('<h2 class="fade-in-out">Soit une série de 24 ans. </h2>', unsafe_allow_html=True)
+    st.title("Les données présentées sur cette page résultent d'une collecte d'informations à partir de différents rapports de la banque centrale du Congo (BCC).")
 
     try:
-        # Chargement des données
-        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx")
+        # Chargement des données depuis l'URL
+        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/base%20de%20donnees%20RDC.xlsx")
         
         # Appliquer le logarithme népérien sur toutes les variables sauf les exceptions
         exceptions = ["Banque centrale - Taux directeur", "Inflation annuelle moyenne"]
@@ -111,7 +88,6 @@ def main():
         # Initialiser les p-values
         p_value = None
         p_value_diff = None
-
         # Sélection de la variable dépendante
         dependent_var = st.selectbox("Sélectionnez la variable dépendante :", df.columns[1:])  # Exclure la première colonne (Année)
 
@@ -151,7 +127,8 @@ def main():
                         st.success(f"La première différence de {var} est stationnaire.")
                     else:
                         st.warning(f"La première différence de {var} n'est pas stationnaire.")
-# Créer un DataFrame pour les variables en première différence
+
+                # Créer un DataFrame pour les variables en première différence
                 df_diff = df.copy()
                 df_diff[dependent_var] = df_diff[dependent_var].diff()
                 for var in independent_vars:
