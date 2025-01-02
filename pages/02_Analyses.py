@@ -218,8 +218,10 @@ def main():
         filtered_df = df[(df['Annee'] >= start_year) & (df['Annee'] <= end_year)].copy()
 
         try:
-            filtered_df[column] = np.log(filtered_df[column])
-            st.write(f"Log appliqué à : {column}")
+            log = ["Banque centrale - Taux directeur","Inflation annuelle moyenne"]
+            if column not in log:
+                filtered_df[column] = np.log(filtered_df[column])
+                st.write(f"Log appliqué à : {column}")
         except (TypeError, ValueError) as e:
             st.error(f"Erreur logarithme : {e}")
             st.stop()
