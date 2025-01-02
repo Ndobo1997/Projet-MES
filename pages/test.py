@@ -10,11 +10,15 @@ import plotly.graph_objects as go
 from statsmodels.tsa.api import VAR
 import networkx as nx
 
-def set_background(image_path, opacity=0.3, color="#000000"):
-    """Fonction pour définir l'image de fond."""
-    # Convertir l'image en base64
-    with open(image_path, "rb") as image_file:
-        image_base64 = base64.b64encode(image_file.read()).decode()
+def main():
+    st.set_page_config(page_title="Visualisation des Données", page_icon="")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
+
+def main():
+    st.set_page_config(page_title="Visualisation des Données", page_icon="")
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
+    set_background(background_url, opacity=0.3, color="#000000")
 
     # CSS pour définir l'image de fond
     st.markdown(
