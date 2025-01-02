@@ -138,7 +138,7 @@ def main():
     set_background(background_path, opacity=0.3, color="#000000")
 
     try:
-        df = pd.read_excel("C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//Articles utiles//Secret pour notre travail//base de donnees RDC.xlsx")
+        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx")
         excluded_columns = ['Annee']
         if not all(col in df.columns for col in excluded_columns):
             missing_cols = [col for col in excluded_columns if col not in df.columns]
