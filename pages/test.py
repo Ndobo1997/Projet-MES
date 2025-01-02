@@ -1,12 +1,12 @@
 import streamlit as st
 
 def set_background(image_url, opacity=0.5, color="#000000"):
-    # Utilisation de l'URL directement dans le CSS
+    """Définit l'image de fond de l'application."""
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("{image_url}");
+            background-image: url({image_url});
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -46,11 +46,6 @@ def set_background(image_url, opacity=0.5, color="#000000"):
             50% {{ opacity: 1; color: #87CEEB; }}
             100% {{ opacity: 0.2; color: #ADD8E6; }}
         }}
-        .fixed-text {{
-            color: #006400; /* Vert foncé */
-            font-size: 1.5em; /* Taille de police */
-            font-weight: normal; /* Poids de police normal */
-        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -58,9 +53,11 @@ def set_background(image_url, opacity=0.5, color="#000000"):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    # URL de l'image hébergée sur GitHub
-    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_congo.jpg"
+    
+    # Définir l'image de fond
+    background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_BDD.jpg"
     set_background(background_url, opacity=0.3, color="#000000")
+
 
     st.markdown("""<h1 class="animated-title">BIENVENUE DANS CET ESPACE D'ANALYSE DE LA SITUATION MACROÉCONOMIQUE DE LA RDC</h1>""", unsafe_allow_html=True)
     st.markdown('<h2 class="fade-in-out">Bonne navigation</h2>', unsafe_allow_html=True)
