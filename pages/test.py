@@ -100,7 +100,7 @@ def main():
 
     try:
         # Chargement des données
-        df = pd.read_excel("C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//Articles utiles//Secret pour notre travail//base de donnees RDC.xlsx")
+        df = pd.read_excel("https://raw.githubusercontent.com/Ndobo1997/Projet-MES/refs/heads/main/base%20de%20donnees%20RDC.xlsx")
         
         # Appliquer le logarithme népérien sur toutes les variables sauf les exceptions
         exceptions = ["Banque centrale - Taux directeur", "Inflation annuelle moyenne"]
