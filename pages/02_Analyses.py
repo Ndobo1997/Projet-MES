@@ -134,7 +134,7 @@ def test_toda_yamamoto(df, var1, var2, max_lags):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
-    background_path = "C://Users//djetek_user//Desktop//ISE 3//Pierre et Nathan projet//image_analyse_donnees.jpg"
+    background_path = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_analyse_donnees.jpg"
     set_background(background_path, opacity=0.3, color="#000000")
 
     try:
