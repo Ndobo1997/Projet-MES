@@ -34,7 +34,7 @@ def set_background(image_url, opacity=0.5, color="#000000"):
         @keyframes text-animation {{
             0% {{ transform: translateX(-100%); opacity: 0; }}
             10% {{ transform: translateX(0%); opacity: 1;}}
-            90% {{transform: translateX(0%); opacity: 1;}
+            90% {{transform: translateX(0%); opacity: 1;}}
             100% {{ transform: translateX(100%); opacity: 0; }}
         }}
         .fade-in-out {{
@@ -58,6 +58,7 @@ def set_background(image_url, opacity=0.5, color="#000000"):
 
 def main():
     st.set_page_config(page_title="Visualisation des Données", page_icon="")
+    # URL de l'image hébergée sur GitHub
     background_url = "https://raw.githubusercontent.com/Ndobo1997/Projet-MES/main/image_congo.jpg"
     set_background(background_url, opacity=0.3, color="#000000")
 
