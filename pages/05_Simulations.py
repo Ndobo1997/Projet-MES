@@ -5,18 +5,6 @@ import plotly.express as px
 from fpdf import FPDF
 import base64
 
-# CSS pour ajouter une image de fond 
-page_bg_img = ''' 
-<style> 
-.stApp { 
-    background-image: url("https://html.scribdassets.com/9nmtrjs70g7tm80y/images/1-0e9a41e842.jpg"); 
-    background-size: cover; 
-    } 
-    </style> 
-    '''
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
-import streamlit as st
 
 st.info("Bienvenue dans l'application de Simulation ARDL ! \n\n"
         "Pour utiliser cette application, suivez les étapes suivantes :\n"
